@@ -1,3 +1,6 @@
+!note
+Before you start looking, this is absolutely vibe coded because I was too lazy.
+
 # Nuxt Minimal Starter
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.

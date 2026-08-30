@@ -6,11 +6,12 @@ export default defineNuxtConfig({
       title: "deppie.dev",
       htmlAttrs: {
         lang: "en",
-
       },
     },
   },
-
+  runtimeConfig: {
+    githubToken: "",
+  },
   compatibilityDate: "2024-11-01",
 
   devtools: {
@@ -27,12 +28,13 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
-  modules: ["@nuxt/icon",],
+  modules: ["@nuxt/icon"],
   icon: {
-    mode: 'css',
-    cssLayer: 'base',
-    provider: 'iconify',
-    serverBundle: false,
-  }
-
+    mode: "css",
+    cssLayer: "base",
+    provider: "none",
+    clientBundle: {
+      icons: ["simple-icons:github", "simple-icons:anilist"],
+    },
+  },
 });
