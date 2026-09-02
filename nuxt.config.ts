@@ -1,9 +1,13 @@
 import tailwindcss from "@tailwindcss/vite";
+import { createResolver } from "nuxt/kit"
+
+const { resolve } = createResolver(import.meta.url)
 
 export default defineNuxtConfig({
+  extends: "./assets",
   app: {
     head: {
-      title: "deppie.dev",
+      title: "deppie.tech",
       htmlAttrs: {
         lang: "en",
       },
@@ -36,5 +40,14 @@ export default defineNuxtConfig({
     clientBundle: {
       icons: ["simple-icons:github", "simple-icons:anilist"],
     },
+    customCollections: [
+      {
+        prefix: 'my-icon',
+        dir: resolve('./assets/my-icons'),
+        recursive: true
+        // if you want to include all the icons in nested directories:
+        // recursive: true,
+      },
+    ],
   },
 });
