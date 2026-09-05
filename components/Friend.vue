@@ -1,35 +1,36 @@
 <script setup lang="ts">
-const friend = defineProps<{
-  avatar: string;
-  display_name: string | null;
-  name: string;
-  socials: {
-    website?: string;
-    github?: string;
-    anilist?: string;
-  };
-}>();
+    defineProps<{
+        avatar: string;
+        display_name?: string;
+        name: string;
+        website?: string;
+    }>();
 </script>
 
 <template>
-  <div class="flex items-center gap-2.5 w-full rounded-2xl bg-[#101010] p-2.5 transition ease-in-out hover:scale-112">
-    <img class="size-15 rounded-2xl" :src="friend.avatar" />
-    <div class="">
-      <p class="font-bold text-start text-xl">
-        {{ friend.display_name ? friend.display_name : friend.name }}
-      </p>
-      <p class="text-[#7f849c] font-light text-base" v-if="friend.display_name">
-        {{ friend.name }}
-      </p>
-    </div>
-    <div class="grid grid-cols-2 gap-2.5 ml-auto align-end">
-      <div v-for="(i, social) in friend.socials" :key="social">
-        <a class="flex items-center justify-center rounded-full" :href="i" target="_blank" rel="noopener noreferrer">
-          <Icon :name="(social != 'website' ? 'simple-icons:' : 'my-icon:') + social" size="25px"
-            style="color: white" />
+    <a
+        :href="website"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block w-full">
+        <div
+            class="flex min-h-full w-full items-center gap-4 rounded-2xl bg-[#101010] p-2.5 transition-transform ease-in-out hover:scale-[1.04]">
+            <img
+                :src="avatar"
+                :alt="display_name ?? name"
+                class="size-15 shrink-0 rounded-2xl object-cover" />
 
-        </a>
-      </div>
-    </div>
-  </div>
+            <div class="min-w-0">
+                <p class="truncate text-xl font-bold">
+                    {{ display_name ?? name }}
+                </p>
+
+                <p
+                    v-if="display_name"
+                    class="truncate text-base font-light text-[#7f849c]">
+                    {{ name }}
+                </p>
+            </div>
+        </div>
+    </a>
 </template>
