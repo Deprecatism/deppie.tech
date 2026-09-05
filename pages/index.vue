@@ -3,9 +3,9 @@
         <section class="grid gap-10 md:grid-cols-3 place-items-center-safe">
             <div class="grid md:col-span-2">
                 <p class="pl-1 text-2xl">Hewo!! I'm</p>
-                <h1 class="font-bold text-7xl">
+                <p class="font-bold text-7xl">
                     {{ userdata.username }}
-                </h1>
+                </p>
                 <div class="flex justify-center gap-5 pt-5">
                     <div
                         v-for="(url, social) in userdata.socials"
@@ -29,14 +29,14 @@
         </section>
         <section class="grid w-full grid-cols-1 gap-5 md:grid-cols-3">
             <div class="grid w-full col-span-2 gap-10 place-items-center-safe">
-                <p class="text-xl whitespace-pre-line">
+                <p class="text-xl whitespace-pre-line place-self-start">
                     {{ userdata.about }}
                 </p>
                 <div
                     v-if="!repositoriesError"
-                    class="grid grid-cols-1 gap-5">
-                    <h2 class="font-bold text-4xl text-center">Repos</h2>
-                    <div class="grid grid-cols-2 gap-10">
+                    class="grid gap-5 w-full">
+                    <p class="font-bold text-4xl text-center">Repos</p>
+                    <div class="grid md:grid-cols-2 w-full gap-5">
                         <Repository
                             v-for="repo in repositoryList"
                             :key="repo.name"
@@ -47,7 +47,7 @@
             <div
                 class="grid gap-5 w-full"
                 v-if="friends.length">
-                <h2 class="font-bold text-4xl">Friends</h2>
+                <p class="font-bold text-4xl">Friends</p>
                 <div class="grid w-full gap-5">
                     <Friend
                         v-for="friend in friends"
